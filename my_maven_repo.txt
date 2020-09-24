@@ -1,0 +1,63 @@
+// 
+#https://mymavenrepo.com/app/repos/
+#mrkumarji/dummy123
+Read :  https://mymavenrepo.com/repo/9ngkutueTJErKBmTKNQA/
+write: https://mymavenrepo.com/repo/NNVwWBeDw31NXaC7tbsx/
+
+<settings>
+    <profiles>
+        <profile>
+            <id>myMavenRepoRead</id>
+            <activation>
+                <property>
+                    <name>!doNotUseMyMavenRepo</name>
+                </property>
+            </activation>
+            <properties>
+                <myMavenRepoReadUrl>https://mymavenrepo.com/repo/9ngkutueTJErKBmTKNQA/</myMavenRepoReadUrl>
+            </properties>
+        </profile>
+        <profile>
+            <id>myMavenRepoWrite</id>
+            <activation>
+                <property>
+                    <name>!doNotUseMyMavenRepo</name>
+                </property>
+            </activation>
+            <properties>
+                <myMavenRepoWriteUrl>https://mymavenrepo.com/repo/NNVwWBeDw31NXaC7tbsx/</myMavenRepoWriteUrl>
+            </properties>
+        </profile>
+    </profiles>
+
+    <servers>
+        <server>
+            <id>myMavenRepoRead</id>
+            <username>${yourHttpAuthReadUserName}</username>
+            <password>${yourHttpAuthReadUserPassword}</password>
+        </server>
+    </servers>
+</settings>
+
+
+<project>
+    ...
+    <repositories>
+        <repository>
+            <id>myMavenRepoRead</id>
+            <url>${myMavenRepoReadUrl}</url>
+        </repository>
+    </repositories>
+    ...
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepoWrite</id>
+            <url>${myMavenRepoWriteUrl}</url>
+        </repository>
+        <snapshotRepository>
+            <id>myMavenRepoWrite</id>
+            <url>${myMavenRepoWriteUrl}</url>
+        </snapshotRepository>
+    </distributionManagement>
+    ...
+</project>
