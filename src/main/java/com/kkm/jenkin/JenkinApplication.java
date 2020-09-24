@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JenkinApplication {
 
 	public static void main(String[] args) {
+                /* added new line */
 		SpringApplication.run(JenkinApplication.class, args);
 	}
 
