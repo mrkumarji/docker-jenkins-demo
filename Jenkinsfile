@@ -25,7 +25,6 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'maven_3_6_3') {
-                    #sh 'mvn deploy'
                     echo "code is ready "
                 }
             }
